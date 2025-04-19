@@ -1,0 +1,22 @@
+<mat-sidenav-container>
+  <mat-sidenav #drawer mode="side" opened="false">
+     <mat-list>
+      <div mat-subheader>Notes</div>
+      @for (option of options; track option) {
+        <mat-list-item
+        [routerLink]="option.link" (click)="drawer.toggle()">
+          <mat-icon matListItemIcon>{{option.icon}}</mat-icon>
+          <div matListItemTitle>{{option.name}}</div>
+        </mat-list-item>
+      }
+    </mat-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-header (menuClicked)="drawer.toggle()"></app-header>
+    <div class="app">
+      <router-outlet />
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

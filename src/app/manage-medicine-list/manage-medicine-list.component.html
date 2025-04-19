@@ -1,0 +1,48 @@
+<div class="manage-medicine">
+  <div class="manage-medicine__header">
+    <h2>Medicine List</h2>
+    <button mat-flat-button color="primary" (click)="addNew()">Add Medicine</button>
+  </div>
+
+  <div class="manage-medicine__content">
+    @for (time of timeGroups; track time) {
+      <h3 class="time-heading" *ngIf="groupedMedicines()[time]?.length">{{ time | enumKey : MedicineTime }}</h3>
+
+      <ng-container *ngIf="groupedMedicines()[time]?.length">
+        @for (medicine of groupedMedicines()[time]; track medicine) {
+          <mat-card class="medicine-card" appearance="outlined">
+            <mat-card-header>
+              <mat-card-title>{{ medicine.name }}</mat-card-title>
+              <mat-card-subtitle>
+                {{ medicine.day | enumKey : MedicineDay }}
+              </mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content>
+              <div class="medicine-card__info">
+                <div><strong>Referred By:</strong> {{ medicine.referredBy }}</div>
+                <div><strong>Treatment For:</strong> {{ medicine.treatmentFor }}</div>
+                <div><strong>Started:</strong> {{ medicine.firstStarted }}</div>
+                <br/>
+                <div *ngIf="medicine.additionalNotes"><strong>Additional Note:</strong> {{ medicine.additionalNotes }}</div>
+
+              </div>
+            </mat-card-content>
+
+            <mat-card-actions align="end">
+              <button class="rounded-btn" mat-stroked-button color="primary" (click)="goToMedicine(medicine)">Details</button>
+              <button
+                mat-icon-button
+                color="warn"
+                aria-label="Remove medicine"
+                (click)="removeMedicine(medicine.id)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        }
+      </ng-container>
+    }
+  </div>
+</div>

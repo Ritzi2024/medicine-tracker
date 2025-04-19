@@ -1,0 +1,65 @@
+<h2 mat-dialog-title>New Medicine</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="medicineForm">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Treatment For</mat-label>
+      <input matInput formControlName="treatmentFor" />
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Dosage</mat-label>
+      <input matInput formControlName="dosage" />
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Time of the day</mat-label>
+      <mat-select formControlName="time">
+        @for (time of medicineTimeOptions; track time) {
+        <mat-option [value]="time.value">{{
+          time.value | enumKey : MedicineTime
+        }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Days to take</mat-label>
+      <mat-select formControlName="day">
+        @for (day of medicineDayOptions; track day) {
+        <mat-option [value]="day.value">{{
+          day.value | enumKey : MedicineDay
+        }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Referred By</mat-label>
+      <input matInput formControlName="referredBy" />
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>First Started on</mat-label>
+      <input matInput formControlName="firstStarted" />
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Additional Notes</mat-label>
+      <textarea matInput formControlName="additionalNotes"></textarea>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    mat-button
+    [mat-dialog-close]="medicineForm.value"
+    type="submit"
+    cdkFocusInitial
+    [disabled]="medicineForm.invalid"
+  >
+    Save
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,70 @@
+import { MedicineDay, MedicineTime } from "../enums";
+import { IMedicine } from "../interfaces/IMedicine";
+import { v4 as uuidv4 } from 'uuid';
+
+export const dummyMedicines: IMedicine[] = [
+  {
+    id: uuidv4(),
+    name: "Paracetamol",
+    description: "Used to treat fever and mild pain",
+    treatmentFor: "abc",
+    dosage: 500,
+    time: MedicineTime.AFTER_LUNCH,
+    day: MedicineDay.DAILY,
+    referredBy: "Dr. Smith",
+    firstStarted: "2025-03-01",
+  },
+  {
+    id: uuidv4(),
+    name: "Amoxicillin",
+    description: "Antibiotic for bacterial infections",
+    treatmentFor: "abc",
+    dosage: 250,
+    time: MedicineTime.AFTER_LUNCH,
+    day: MedicineDay.DAILY,
+    referredBy: "Dr. Johnson",
+    firstStarted: "2025-04-10",
+  },
+  {
+    id: uuidv4(),
+    name: "Ibuprofen",
+    dosage: 400,
+    treatmentFor: "abc",
+    time: MedicineTime.AFTER_LUNCH,
+    day: MedicineDay.DAILY,
+    referredBy: "Dr. Lee",
+    firstStarted: "2025-02-15",
+  },
+  {
+    id: uuidv4(),
+    name: "Vitamin D",
+    description: "Supplement for Vitamin D deficiency",
+    treatmentFor: "abc",
+    dosage: 1000,
+    time: MedicineTime.AFTER_LUNCH,
+    day: MedicineDay.DAILY,
+    referredBy: "Dr. Patel",
+    firstStarted: "2024-12-05",
+  },
+  {
+    id: uuidv4(),
+    name: "Metformin",
+    dosage: 850,
+    treatmentFor: "abc",
+    time: MedicineTime.BEFORE_DINNER,
+    day: MedicineDay.DAILY,
+    referredBy: "Dr. Nguyen",
+    firstStarted: "2025-01-20",
+  },
+  {
+    id: uuidv4(),
+    name: "Loratadine",
+    description: "Used for allergies",
+    treatmentFor: "abc",
+    dosage: 10,
+    time: MedicineTime.BEFORE_BREAKFAST,
+    day: MedicineDay.DAILY,
+    referredBy: "Dr. Carter",
+    firstStarted: "2025-03-25",
+  }
+];
