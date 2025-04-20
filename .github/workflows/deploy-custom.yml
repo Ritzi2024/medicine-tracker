@@ -32,4 +32,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages                     # Target branch
-          folder: dist/medicine-tracker/browser        # Folder to deploy
+          folder: dist/medicine-tracker        # Folder to deploy
+      - name: Debug List Output Files
+        run: ls -la dist/medicine-tracker/
