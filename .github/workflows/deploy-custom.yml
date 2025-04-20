@@ -1,31 +1,30 @@
-name: Build & Deploy Angular to GitHub Pages
+name: Deploy Angular PWA to GitHub Pages
 
 on:
   push:
-    branches: [ main ]  # Runs on push to main
+    branches: [main]
 
 jobs:
-  build-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout source
-      uses: actions/checkout@v4
+      - name: 📦 Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        cache: 'npm'
+      - name: ⚙️ Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-    - name: Install dependencies
-      run: npm ci
+      - name: 📥 Install dependencies
+        run: npm ci
 
-    - name: Build Angular app
-      run: npm run build --base-href=/medicine-tracker/
+      - name: 🛠️ Build Angular app
+        run: npm run build -- --base-href=/medicine-tracker/
 
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@v4
-      with:
-        branch: main              # Target branch for GitHub Pages
-        folder: dist/medicine-tracker/browser  # Path to your built app
+      - name: 🚀 Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages                     # Target branch
+          folder: dist/medicine-tracker/browser        # Folder to deploy
