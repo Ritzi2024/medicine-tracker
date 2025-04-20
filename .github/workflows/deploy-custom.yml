@@ -22,7 +22,7 @@ jobs:
       run: npm ci
 
     - name: Build Angular app
-      run: ng build --base-href /medicine-tracker/ && npx cap copy
+      run: npm run build --base-href /medicine-tracker/ && npx cap copy
 
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4
