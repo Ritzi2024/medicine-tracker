@@ -24,7 +24,7 @@ jobs:
         run: npm run build -- --configuration=production --base-href=/medicine-tracker/
 
       - name: Debug List Output Files
-        run: ls -la dist/medicine-tracker/
+        run: ls -la dist/medicine-tracker/browser/
 
       - name: Update manifest.webmanifest
         run: |
@@ -35,4 +35,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages                     # Target branch
-          folder: dist/medicine-tracker        # Folder to deploy
+          folder: dist/medicine-tracker/browser        # Folder to deploy
