@@ -21,10 +21,15 @@ jobs:
         run: npm ci
 
       - name: 🛠️ Build Angular app
-        run: npm run build -- --base-href=/medicine-tracker/
+        run: npm run build --base-href=/medicine-tracker/
+
+      - name: Update manifest.webmanifest
+        run: |
+          sed -i 's|\"start_url\": \"./\"|\"start_url\": \"/medicine-tracker/\"|' dist/medicine-tracker/manifest.webmanifest
+          sed -i 's|\"scope\": \"./\"|\"scope\": \"/medicine-tracker/\"|' dist/medicine-tracker/manifest.webmanifest
 
       - name: 🚀 Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages                     # Target branch
-          folder: dist/medicine-tracker/browser        # Folder to deploy
+          folder: dist/medicine-tracker        # Folder to deploy
