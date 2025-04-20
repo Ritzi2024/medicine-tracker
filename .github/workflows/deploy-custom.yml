@@ -22,10 +22,10 @@ jobs:
       run: npm ci
 
     - name: Build Angular app
-      run: npm run build && npx cap copy
+      run: npm run build --base-href=/medicine-tracker/
 
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-        branch: gh-pages              # Target branch for GitHub Pages
+        branch: main              # Target branch for GitHub Pages
         folder: dist/medicine-tracker/browser  # Path to your built app
